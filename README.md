@@ -1,4 +1,11 @@
 # VPC-Networks-1
+------------------------------------------------------------------------
+creating a subnet
+-------------------------------------------------------------------------------
+gcloud compute networks create managementnet --project=qwiklabs-gcp-03-e1b085560f61 --subnet-mode=custom --mtu=1460 --bgp-routing-mode=regional
+
+gcloud compute networks subnets create managementsubnet-us --project=qwiklabs-gcp-03-e1b085560f61 --range=10.130.0.0/20 --network=managementnet --region=us-central1
+---------------------------------------------------------------
 Creating a privatenet network
 ---------------------------------------------------------------------------
 gcloud compute --project=qwiklabs-gcp-00-c7314351edd5 firewall-rules create managementnet-allow-icmp-ssh-rdp --direction=INGRESS --priority=1000 --network=managementnet --action=ALLOW --rules=tcp:22,tcp:3389,icmp --source-ranges=0.0.0.0/0
